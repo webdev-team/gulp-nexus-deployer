@@ -1,0 +1,11 @@
+#MAC_CACHE_FILE
+.DS_Store
+
+#INTELLIJ
+*.iml
+
+#BRACKETS
+.brackets.json
+
+#FOLDER
+**/node_modules
