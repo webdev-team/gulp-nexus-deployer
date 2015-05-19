@@ -34,7 +34,7 @@ var save = function (fileContent, pomDir, fileName) {
     file.writeFileSync(pomDir + '/' + fileName + '.sha1', sha1(fileContent));
 };
 
-var createAndUploadArtifacts = function (options) {
+var createAndUploadArtifacts = function (options, cb) {
     var pomDir = options.pomDir || 'test/poms';
 
     options.parallel = options.parallel === undefined ? false : options.parallel;
@@ -142,16 +142,17 @@ var createAndUploadArtifacts = function (options) {
                 console.log('Artifact Upload failed\n' + String(err));
             } else {
                 console.log('Artifacts uploaded successfully');
+                cb();
             }
         }
     });
 };
 
-module.exports = function (options) {
+module.exports = function (options, cb) {
     if (!options) {
         throw {name: "IllegalArgumentException", message: "upload artifact options required."};
     }
     exec = process.env.MOCK_NEXUS ? require('./mockexec') : require('child_process').exec;
     options.lastUpdated = dateformat(new Date(), "yyyymmddHHMMss");
-    createAndUploadArtifacts(options);
+    createAndUploadArtifacts(options, cb);
 };
