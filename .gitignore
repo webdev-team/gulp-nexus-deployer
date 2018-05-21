@@ -3,6 +3,7 @@
 
 #INTELLIJ
 *.iml
+.idea
 
 #BRACKETS
 .brackets.json

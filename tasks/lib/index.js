@@ -1,11 +1,11 @@
 'use strict';
 
-var ejs = require('ejs')
-    , exec
-    , dateformat = require('dateformat')
-    , crypto = require('crypto')
-    , async = require('async')
-    , file = require('fs');
+var ejs = require('ejs');
+var exec;
+var dateformat = require('dateformat');
+var crypto = require('crypto');
+var async = require('async');
+var file = require('fs');
 
 ejs.open = "{{";
 ejs.close = "}}";
